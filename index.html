@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="theme-color" content="#4CAF50" />
+
+    <!-- PWA iOS Friendly -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="PWA Cámara GPS" />
+    <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+
+    <link rel="manifest" href="./manifest.json" />
+
+    <title>PWA Cámara GPS</title>
+
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>📸 PWA Cámara + GPS</h1>
+      <p class="subtitle">Captura una foto con ubicación</p>
+      
+      <button id="takePhotoBtn" class="btn-primary">Tomar fotografía</button>
+      
+      <!-- Vista de cámara oculta -->
+      <div id="cameraContainer" style="display: none;">
+        <video id="video" autoplay playsinline></video>
+        <button id="captureBtn" class="btn-capture">Capturar</button>
+        <button id="cancelBtn" class="btn-cancel">Cancelar</button>
+      </div>
+      
+      <canvas id="canvas" style="display: none;"></canvas>
+    </div>
+
+    <!-- Modal para mostrar foto + GPS -->
+    <div id="photoModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Fotografía Capturada</h2>
+        <img id="capturedImage" alt="Foto capturada">
+        <div class="location-info">
+          <h3>Ubicación GPS</h3>
+          <p><strong>Latitud:</strong> <span id="latitude">-</span></p>
+          <p><strong>Longitud:</strong> <span id="longitude">-</span></p>
+          <a id="mapsLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-maps">
+            Ver en Google Maps
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/app.js"></script>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker
+            .register("./sw.js")
+            .then(() => console.log(" Service Worker registrado"))
+            .catch((err) => console.error(" Error al registrar SW:", err));
+        });
+      }
+    </script>
+  </body>
+</html>
