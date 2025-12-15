@@ -1,4 +1,4 @@
 - Nombre del alumno:FIGUEROA TERAN LIZZETH SUSANA
 - Grupo:10B
 - Descripción breve del proyecto:PWA con usa de camara,imagenes y cache
-- Enlace a la aplicación publicada en GitHub Pages:
+- Enlace a la aplicación publicada en GitHub Pages:https://lizzethsusana.github.io/extra-lsft-10b/
